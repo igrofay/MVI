@@ -1,5 +1,6 @@
 package com.example.mvi_proj
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import org.kodein.di.DI
@@ -13,7 +14,8 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.syntax.simple.repeatOnSubscription
 
 class CounterVM(
-    override val di: DI
+    override val di: DI,
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel(),
     DIAware,
     ContainerHost<CounterState,CounterAction >,

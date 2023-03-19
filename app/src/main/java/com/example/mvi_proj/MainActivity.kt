@@ -10,9 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.createSavedStateHandle
 import com.example.mvi_proj.ui.theme.MVI_projTheme
 import org.kodein.di.DIAware
 import org.kodein.di.android.closestDI
@@ -40,12 +43,13 @@ class MainActivity : ComponentActivity(), DIAware {
                         }
                     }
                 }
-
                 Scaffold(
                     scaffoldState = scaffoldState
                 ){
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(it),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(it),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
@@ -62,6 +66,7 @@ class MainActivity : ComponentActivity(), DIAware {
             }
         }
     }
+
 
 
 }
