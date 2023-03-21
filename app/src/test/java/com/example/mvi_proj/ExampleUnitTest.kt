@@ -1,9 +1,12 @@
 package com.example.mvi_proj
 
+import com.example.mvi_proj.crypto.decrypt
+import com.example.mvi_proj.crypto.encrypt
+import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
-import java.util.Base64
+import java.security.MessageDigest
+import java.util.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -17,10 +20,18 @@ class ExampleUnitTest {
     }
     @Test
     fun s(){
-        val originalString = "Привет"
-        val encodedString: String = Base64.getEncoder().encodeToString(originalString.toByteArray())
-        println(encodedString)
-        val decodedString = String(Base64.getDecoder().decode(encodedString))
-        println(decodedString)
+        val dig = MessageDigest.getInstance("SHA-256")
+        val hash = dig.digest("124567".toByteArray()).toHexString()
+        assertEquals(
+            "76f9848f41c4c3e2bf0e8baaf2fcf4579d0b467e695989e507873f46bf6855f3",
+            hash
+        )
+        println(
+            dig.digest("124567".toByteArray())
+                .map { it.toString() }.joinToString(", ")
+        )
     }
+
+    fun ByteArray.toHexString() = joinToString("") { "%02x".format(it) }
+
 }

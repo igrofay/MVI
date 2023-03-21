@@ -1,5 +1,6 @@
 package com.example.mvi_proj
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +16,7 @@ import org.orbitmvi.orbit.syntax.simple.repeatOnSubscription
 
 class CounterVM(
     override val di: DI,
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel(),
     DIAware,
     ContainerHost<CounterState,CounterAction >,
@@ -25,6 +26,10 @@ class CounterVM(
     override val container = viewModelScope.container<CounterState,CounterAction >(
         CounterState(0),
         onCreate = {
+            val message = savedStateHandle.get<String>("mes")
+            intent {
+                postSideEffect(CounterAction.ShowSnackBar(message.toString()))
+            }
             subscribe()
         }
     )

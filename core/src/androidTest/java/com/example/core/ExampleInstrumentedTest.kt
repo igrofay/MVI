@@ -1,10 +1,7 @@
-package com.example.mvi_proj
+package com.example.core
 
-import android.os.Build
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.mvi_proj.crypto.decrypt
-import com.example.mvi_proj.crypto.encrypt
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,11 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.mvi_proj", appContext.packageName)
-    }
-    @Test
-    fun f(){
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-
+        assertEquals("com.example.core.test", appContext.packageName)
     }
 }

@@ -65,5 +65,10 @@ dependencies {
     implementation 'org.kodein.di:kodein-di-framework-android-x-viewmodel:7.16.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.10"
     // Orbit
-    implementation("org.orbit-mvi:orbit-compose:4.6.1")
+    implementation "org.orbit-mvi:orbit-compose:4.6.1"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.10"
+    // Nav
+    def nav_version = "2.5.3"
+
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 }
